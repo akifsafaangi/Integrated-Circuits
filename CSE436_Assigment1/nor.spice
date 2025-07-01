@@ -1,0 +1,32 @@
+.include tsmc_cmos025
+* SPICE3 file created from nor.ext - technology: scmos
+.model nfet NMOS
+.model pfet PMOS
+.option scale=0.12u
+
+Vdd VDD 0 2.5V
+Vin0 A 0 PULSE(0 2.5 0ns 10ns 10ns 20ns 40ns)
+Vin1 B 0 PULSE(0 2.5 0ns 15ns 10ns 20ns 40ns)
+CL vout 0 1fF
+.TRAN 1ns 100ns
+
+M1000 vout A gnd Gnd nfet w=4 l=2
++  ad=32p pd=20u as=40p ps=28u
+M1001 gnd B vout Gnd nfet w=4 l=2
++  ad=24p pd=20u as=32p ps=20u
+M1002 a_12_0# A VDD w_n6_n6# pfet w=8 l=2
++  ad=64p pd=24u as=80p ps=36u
+M1003 vout B a_12_0# w_n6_n6# pfet w=8 l=2
++  ad=48p pd=28u as=64p ps=24u
+C0 A vout 0.048601f
+C1 vout B 0.071237f
+C2 w_n6_n6# VDD 0.018687f
+C3 w_n6_n6# vout 0.017968f
+C4 w_n6_n6# A 0.046307f
+C5 w_n6_n6# B 0.046307f
+C6 gnd 0 0.311004f 
+C7 vout 0 0.505234f 
+C8 B 0 0.71349f 
+C9 A 0 0.707233f 
+C10 VDD 0 0.26889f 
+C11 w_n6_n6# 0 0.85728f 

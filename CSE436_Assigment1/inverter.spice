@@ -1,0 +1,24 @@
+.include tsmc_cmos025
+* SPICE3 file created from inverter.ext - technology: scmos
+.model nfet NMOS
+.model pfet PMOS
+.option scale=0.12u
+
+Vdd VDD 0 2.5V
+Vin in 0 PULSE(0 2.5 0ns 10ns 10ns 20ns 40ns)
+CL out 0 1fF
+.TRAN 1ns 100ns
+
+M1000 out in gnd Gnd nfet w=4 l=2
++  ad=40p pd=28u as=40p ps=28u
+M1001 out in VDD w_n6_n6# pfet w=8 l=2
++  ad=80p pd=36u as=80p ps=36u
+C0 VDD w_n6_n6# 0.018522f
+C1 in out 0.029674f
+C2 w_n6_n6# out 0.01797f
+C3 w_n6_n6# in 0.046307f
+C4 gnd 0 0.215912f 
+C5 out 0 0.40938f 
+C6 in 0 0.700022f 
+C7 VDD 0 0.2335f 
+C8 w_n6_n6# 0 0.60724f 
